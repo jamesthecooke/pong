@@ -42,6 +42,7 @@ end
 
 
 function Ball:collide()
+-- checks collision with the player
     if checkCollision(self, Player) then
         self.xVel = self.speed
         --  local variable is scoped to the function it is declared in
@@ -50,6 +51,17 @@ function Ball:collide()
         local collisionPosition = middleBall - middlePlayer
         self.yVel = collisionPosition * 5
     end
+--  checks collision with the ai
+    if checkCollision(self, Ai) then
+        self.xVel = -self.speed
+        --  local variable is scoped to the function it is declared in
+        local middleBall = self.y + self.height / 2
+        local middleAi = Player.y + Ai.height / 2
+        local collisionPosition = middleBall - middleAi
+        self.yVel = collisionPosition * 5
+    end
+
+
     -- checking if the ball is going off the screen
     -- if it reaches the border, then it will change the velocity direction
     if self.y < 0 then

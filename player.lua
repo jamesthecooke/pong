@@ -4,7 +4,7 @@ Player = {}
 
 function Player:load()
     self.x = 50
-    self.y = love.graphics.getHeight() / 2
+    self.y = love.graphics.getHeight() / 2 --  centering the player
     self.width = 20
     self.height = 100
     self.speed = 500
