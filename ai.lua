@@ -4,12 +4,15 @@ Ai = {}
 
 
 function Ai:load()
-    self.width = 20
-    self.height = 100
+    self.img = love.graphics.newImage("assets/1.png")
+    self.width = self.img:getWidth()
+    self.height = self.img:getHeight()
+    -- self.width = 20
+    -- self.height = 100
     self.x = love.graphics.getWidth() - self.width - 50
     self.y = love.graphics.getHeight() / 2  --  centering the ai
     self.yVel = 0
-    self.speed = 500
+    self.speed = 700
 end
 
 
@@ -23,7 +26,8 @@ end
 
 
 function Ai:draw()
-    love.graphics.rectangle("fill", self.x, self.y, self.width, self.height)
+    love.graphics.draw(self.img, self.x, self.y)
+    -- love.graphics.rectangle("fill", self.x, self.y, self.width, self.height)
 end
 
 

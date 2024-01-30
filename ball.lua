@@ -51,6 +51,9 @@ function Ball:collide()
         local collisionPosition = middleBall - middlePlayer
         self.yVel = collisionPosition * 5
     end
+
+    
+
 --  checks collision with the ai
     if checkCollision(self, Ai) then
         self.xVel = -self.speed
@@ -70,5 +73,22 @@ function Ball:collide()
     elseif self.y + self.height > love.graphics.getHeight() then
         self.y = love.graphics.getHeight() - self.height
         self.yVel = -self.yVel
+    end
+
+
+    -- to see if the ball has made it past the player paddle 
+    if self.x < 0 then
+        self.x = love.graphics.getWidth() / 2 - self.width / 2
+        self.y = love.graphics.getHeight() / 2 - self.height / 2
+        self.yVel = 0
+        self.xVel = self.speed
+    end
+
+    -- to see if the ball has made it past the ai paddle
+    if self.x + self.width > love.graphics.getWidth() then
+        self.x = love.graphics.getWidth() / 2 - self.width / 2
+        self.y = love.graphics.getHeight() / 2 - self.height / 2
+        self.yVel = 0
+        self.xVel = -self.speed
     end
 end
