@@ -1,3 +1,5 @@
+-- creates a table to store the player's properties
+
 Player = {}
 
 function Player:load()
@@ -10,7 +12,6 @@ end
 
 
 function Player:update(dt)
-
     self:move(dt)
     self:checkBoundaries()
 
@@ -18,7 +19,6 @@ end
 
 
 function Player:draw()
-
     love.graphics.rectangle("fill", self.x, self.y, self.width, self.height)
 
 end
